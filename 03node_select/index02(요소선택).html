@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="check1">쿼리셀렉터</button><!-- id의 선택자 #check1 -->
+    <div class="box1">
+        <ul>
+            <li>안녕</li>
+            <li>hello</li>
+            <li>중국어</li>
+        </ul>
+    </div>
+
+    <script>
+
+        var check1 = document.querySelector("#check1"); //css문법으로 선택
+        check1.onclick = function() {
+            
+            var test1 = document.querySelector(".box1 > ul > li"); //css문법으로 선택 셀렉터는 1개만선택함-단일선택
+            console.log(test1);
+
+            var list = document.querySelectorAll(".box1 > ul > li");
+            console.log(list);
+            for(var i = 0; i < list.length; i++) {
+                console.log(list[i]);
+            }
+
+        }
+
+    </script>
+
+    <hr>
+    <h3>실습</h3>
+
+    <input type="checkbox" name="test" value="1">1
+    <input type="checkbox" name="test" value="2">2
+    <input type="checkbox" name="test" value="3">3
+    <input type="checkbox" name="test" value="4">4
+
+    <button class="btn">체크박스선택버튼</button>
+
+    <script>
+
+        //버튼클릭시 name="text" 인 태그를 쿼리셀렉터올로 선택
+        var btn = document.querySelector(".btn");
+        btn.onclick = function() {
+
+            var test = document.querySelectorAll("input[name='test']");
+            console.log(test);
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" id="btn">이벤트(태그)에서의 this</button>
+
+    <script>
+
+        //JS의 this는 java의 this와 약간의 차이점이 있다.
+        var x = 1;
+        function func() {
+            var x = 10;
+            console.log(x); //가까이 있는 지역변수 x 가 선택됨
+            console.log(this.x) //전역변수 x
+            console.log(this); //window객체 최상위 객체
+        }
+        func();
+
+        //태그에서의 this
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+            console.log(this);
+        }
+
+
+    </script>
+
+</body>
+</html>
