@@ -33,6 +33,33 @@
         3. 체크되어 있다면 배열에 체크된 자석을 추가.
         4. json형태의 문자열로 반환
          */
+
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+
+            var seat = document.getElementsByName("seat"); //배열
+            var bool = false; //체크여부를 확인할 변수
+            var arr = new Array(); //요소를 담을 배열
+
+            for( var i = 0; i < seat.length; i++ ) {
+
+                if( seat[i].checked ) {
+                    arr.push(seat[i]);
+                    bool = true; //체크되었다는뜻
+                }
+
+            }
+
+            if(bool) {
+                //결과 출력
+                var str = JSON.stringify({data: arr});
+                console.log(str);
+            } else {
+                alert("좌석선택은 필수입니다");
+            }
+
+        }
+
     </script>
 
 </body>
