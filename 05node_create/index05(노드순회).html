@@ -33,7 +33,7 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="table">
 
             <tr>
                 <td>
@@ -92,17 +92,51 @@
     <script>
 
         function down(node) {
-            // console.log(node);
+
             console.dir(node);
+            // console.log(node);
 
-            console.log(node.parentElement); //부모노드선택(엘리먼트형식으로선택)
-            console.log(node.parentNode); //부모노드선택(text, 주석, 엘리먼트형식으로 선택)
+            // console.log(node.parentElement); //부모노드선택(엘리먼트형식으로선택)
+            // console.log(node.parentNode); //부모노드선택(text, 주석, 엘리먼트형식으로 선택)
 
-            console.log(node.nextElementSibling);
-            console.log(node.previousElementSibling);
+            // console.log(node.nextElementSibling);
+            // console.log(node.previousElementSibling);
 
-            console.log(node.firstElementChild) //첫번째 자식요소(지금은x)
-            console.log(node.lastElementChild) //첫번째 자식요소(지금은x)
+            // console.log(node.firstElementChild) //첫번째 자식요소(지금은x)
+            // console.log(node.lastElementChild) //첫번째 자식요소(지금은x)
+
+            //클릭한 버튼의 tr태그 (부모의부모)
+            var current = node.parentElement.parentElement;
+            console.log(current);
+            var next = current.nextElementSibling;
+            console.log(next);
+
+            if( next == null ) {
+                alert("마지막 행입니다");
+                return;
+            }
+
+            var table = document.querySelector(".table");
+            table.insertBefore( next, current );
+            //insertBefore(삽입노드, 기준노드); //기준노드 앞에 삽입노드를 추가
+
+
+        }
+
+        //up버튼 insertBefore를 이용해서 처리
+        function up(node) {
+
+            var current2 = node.parentElement.parentElement;
+            var prev = current2.previousElementSibling
+
+            if( prev == null ) {
+                alert("첫번째 행입니다");
+                return;
+            }
+
+            var table2 = document.querySelector(".table");
+            table2.insertBefore( current2, prev );
+
         }
 
     </script>
