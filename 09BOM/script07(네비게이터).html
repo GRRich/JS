@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        //네비게이터객체는 - 브라우저에 대한 정보를 제공합니다
+        // console.dir(navigator);
+        var browser = navigator.userAgent.toLocaleLowerCase();
+        console.log(browser);
+        console.log(browser.indexOf("chrome")); //문자가있다면 위치, 없다면 -1반환
+
+        if(browser.indexOf("chrome") != -1) {
+            //크롬디자인
+            console.log("크롬");
+            //디자인동적로드
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = "style.css";
+            document.head.appendChild(link);
+        }
+
+    </script>
+
+
+</body>
+</html>

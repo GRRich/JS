@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+
+        .bgImg {
+            position: absolute; /* body기준으로 떠오른다 */
+            top: 0;
+            left: 0;
+            z-index: -1; /* 가장뒤로 */
+            animation: fadeIn .5s linear;
+        }
+
+        .clock h2 {
+            font-size: 50px;
+            text-align: center;
+            color: #fff;
+            margin-top: 300px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+    
+    <div class="clock">
+        <h2>00:00:00</h2>
+    </div>
+
+    <script>
+
+        function createTime() {
+
+            //1초마다 시간을 만들어서 h2에 innerHTML로 변경
+
+            var date = new Date(); //현재시간
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var senconds = date.getSeconds();
+
+            var time = (hours < 10 ? "0" + hours : hours) + ":" + 
+                       (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                       (senconds < 10 ? "0" + senconds : senconds);
+
+            var h2  = document.querySelector(".clock > h2");
+            h2.innerHTML = time; //h2에 time저장
+
+        }
+
+        var num = 0;
+        function chageBack() {
+            
+            var img = document.createElement("img");
+            img.src = "imgs/" + ++num + ".jpg";
+            img.classList.add("bgImg"); //애니메이션클래스
+
+            //이미지 추가
+            document.body.appendChild(img);
+
+            if(num == 4) num = 0;
+
+        }
+
+        (function() {
+            createTime(); //바로시작
+            setInterval(createTime, 1000); //이후 1초마다 실행
+
+            chageBack(); //배경
+            setInterval(chageBack, 10000); //10초마다 실행
+
+        })();
+
+    </script>
+
+
+</body>
+</html>
