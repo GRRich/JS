@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var xhr = new XMLHttpRequest();
+        var url = 'http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth'; /*URL*/
+        var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'2%2BiwVVnkfof36YwtlqH8hINkRrkxr2zvzZIutA%2FdshSSyrzvBN%2FPzlAsivrjFJbWSIwm5YP9cWJrLVV0w%2FofCA%3D%3D'; /*Service Key*/
+        queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('xml'); /**/
+        queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /**/
+        queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+        queryParams += '&' + encodeURIComponent('searchDate') + '=' + encodeURIComponent('2022-03-13'); /**/
+        queryParams += '&' + encodeURIComponent('InformCode') + '=' + encodeURIComponent('PM10'); /**/
+        xhr.open('GET', url + queryParams);
+
+        console.log(xhr);
+        console.log(url);
+        console.log(queryParams);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+            }
+        };
+
+        xhr.send('');
+
+    </script>
+
+</body>
+</html>
